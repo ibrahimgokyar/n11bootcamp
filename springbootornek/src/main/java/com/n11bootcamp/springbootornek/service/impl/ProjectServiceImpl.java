@@ -1,10 +1,13 @@
 package com.n11bootcamp.springbootornek.service.impl;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.List;
 
 import com.n11bootcamp.springbootornek.repository.ProjectRepository;
 import com.n11bootcamp.springbootornek.service.ProjectService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.n11bootcamp.springbootornek.entity.Project;
 
@@ -23,13 +26,17 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<Project> getAll() {
+        //select * from project
+        //jdbc
         List<Project> projectList = projectRepository.findAll();
         return projectList;
     }
 
     @Override
     public Project getById(Long id) {
-        Project project = projectRepository.getReferenceById(id);
+
+        Project project = projectRepository.findById(id).get();
+                //.orElseThrow(() -> new RuntimeException("Product not found in DB"));
         return project;
     }
 
@@ -39,6 +46,8 @@ public class ProjectServiceImpl implements ProjectService {
         {
             throw new IllegalArgumentException("hatalı kayıt");
         }
+       // project.setInsertDate(new Date());
+        project.setInsertDate(Date.from(LocalDateTime.now().toInstant(ZoneOffset.UTC)));
         //insert into Project(ProjectName,ProjectCode) values(project.getProject)
         Project projectDb= projectRepository.save(project);
 
