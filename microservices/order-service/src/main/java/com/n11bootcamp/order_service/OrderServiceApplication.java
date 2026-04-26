@@ -1,4 +1,4 @@
-package com.n11bootcamp.stock_service;
+package com.n11bootcamp.order_service;
 
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @EnableRabbit            // RabbitMQ listener kullanmak için
 @CrossOrigin
 @EnableFeignClients
-public class StockServiceApplication {
+public class OrderServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(StockServiceApplication.class, args);
+		SpringApplication.run(OrderServiceApplication.class, args);
 	}
 
 }
