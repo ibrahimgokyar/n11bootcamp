@@ -173,7 +173,8 @@ public class OrderSagaListener {
             req.setItems(items);
 
             LOGGER.info("[SAGA] Stok telafisi (increaseStock) çağrılıyor. orderId={}", order.getId());
-            stockServiceClient.increaseStock(req);
+           // stockServiceClient.increaseStock(req);
+            stockServiceClient.releaseStock(req);
         } catch (Exception ex) {
             LOGGER.error("[SAGA] Stok telafisi başarısız. orderId={}", order.getId(), ex);
         }

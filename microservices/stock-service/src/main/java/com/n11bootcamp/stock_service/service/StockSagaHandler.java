@@ -41,7 +41,8 @@ public class StockSagaHandler {
                         .collect(Collectors.toList())
         );
 
-        StockUpdateResponse resp = stock.decrease(req);
+        //StockUpdateResponse resp = stock.decrease(req);
+        StockUpdateResponse resp = stock.reserve(req);
 
         if (resp.isSuccess()) {
             EventPayloads.StockReservedEvent reserved =

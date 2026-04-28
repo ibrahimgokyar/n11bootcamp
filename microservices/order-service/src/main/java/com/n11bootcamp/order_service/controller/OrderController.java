@@ -2,7 +2,6 @@ package com.n11bootcamp.order_service.controller;
 
 import com.n11bootcamp.order_service.dto.CreateOrderRequest;
 import com.n11bootcamp.order_service.dto.OrderResponse;
-import com.n11bootcamp.order_service.service.OrderService;
 import com.n11bootcamp.order_service.service.impl.OrderServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
